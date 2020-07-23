@@ -15,6 +15,15 @@ index.onerror = event => {
     console.log(`There was an error with the code: ${event.target.errorcode}`)
 }
 
+index.onsuccess = event => {
+    db = event.target.result;
+
+    if (navigator.onLine) {
+        //Looks in the database to see if anything is online
+        onlineCheck()
+    }
+}
+
 function onlineCheck() {
     const transaction = db.transaction(['pending'], 'readwrite');
 
